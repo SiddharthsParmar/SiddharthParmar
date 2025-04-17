@@ -1,0 +1,13 @@
+@import "tailwindcss";
+
+#main-container{
+ padding-left: 100px;
+ padding-right: 100px;
+}
+#image{
+  background: url("../../public/Siddharth_Photo.png");
+  background-size:cover;
+  
+  
+}
+
