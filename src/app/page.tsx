@@ -1,6 +1,6 @@
 import Introduction from "@/components/Introduction";
 import Navbar from "@/components/Navbar";
-import SkillSection from "@/components/SkillSection";
+// import SkillSection from "@/components/SkillSection";
 import WorkSection from "@/components/WorkSection";
 
 export default function Home() {
@@ -13,7 +13,7 @@ export default function Home() {
     <Introduction/>
     </div>
     <div className="">
-    <SkillSection/>
+    {/* <SkillSection/> */}
     </div>
     
   <WorkSection/> 

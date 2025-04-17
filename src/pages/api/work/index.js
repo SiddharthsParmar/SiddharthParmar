@@ -13,7 +13,7 @@ export default async function handler(req, res) {
 
   if (req.method === 'POST') {
     // POST handler
-const { title, description, detailedDescription, image, video, deploymentLink, category } = req.body;
+const { title, description, image,  deploymentLink, category } = req.body;
 // Save these to DB
 
 // PUT handler (similar)
