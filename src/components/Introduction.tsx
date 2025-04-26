@@ -34,7 +34,7 @@ const Introduction = () => {
 </div>
 
 </div>
-<span className='flex flex-wrap items-center justify-between gap-18'><h1 className='text-9xl font-semibold text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-pink-700'>Full Stack Developer </h1>
+<span className='flex flex-wrap items-center justify-between gap-18'><h1 className='text-9xl font-semibold text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-pink-700'  >Full Stack Developer </h1>
 
 </span>
 

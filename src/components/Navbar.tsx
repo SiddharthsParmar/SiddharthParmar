@@ -16,9 +16,7 @@ const Navbar = () => {
 </div>
 <div className="flex items-center ">
     <a href="">Github</a><span>/</span><a href="">Linkedin</a>
-    <div className="dark mode ml-2 bg-black text-amber-50" onClick={(prev)=>{setTheme(!prev)} }>
-      Dark mode 
-    </div>
+   
     
 </div>
 

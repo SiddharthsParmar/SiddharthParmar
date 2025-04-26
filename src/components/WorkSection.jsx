@@ -1,25 +1,45 @@
 "use client";
-import React, { useEffect, useState } from "react";
-import Link from "next/link"; // Add this at the top
+import React, { useState } from "react";
+import Link from "next/link";
 
 const WorkSection = () => {
-  const workCategories = ["web Apps", "mobile Apps", "ai ml"];
+  const workCategories = ["web Apps", "ai ml"];
   const [selectedWork, setSelectedWork] = useState("web Apps");
-  const [workData, setWorkData] = useState([]);
 
-  // Fetch work items based on selected category
-  useEffect(() => {
-    const fetchWork = async () => {
-      try {
-        const res = await fetch(`/api/work?category=${selectedWork}`);
-        const data = await res.json();
-        setWorkData(data);
-      } catch (error) {
-        console.error("Error fetching work data:", error);
-      }
-    };
-    fetchWork();
-  }, [selectedWork]);
+  // Static work data
+  const staticWorkData = {
+    "web Apps": [
+      {
+        _id: "1",
+        title: "Portfolio Website",
+        description: "A personal portfolio showcasing my skills and projects.with Next JS",
+        image: "/images/image.png",
+        gitlink:''
+      },
+      {
+        _id: "2",
+        title: "E-Commerce Platform",
+        description: "A full-stack MERN e-commerce application.",
+        image: "/images/ecommerce-cover.png",
+      },
+    ],
+    "ai ml": [
+      {
+        _id: "3",
+        title: "Deepfake Detector",
+        description: "A machine learning model to detect deepfake images.",
+        image: "/images/deep.png",
+      },
+      {
+        _id: "4",
+        title: "Chatbot Assistant",
+        description: "An AI-powered chatbot built using NLP models.",
+        image: "/images/chatbot.png",
+      },
+    ],
+  };
+
+  const workData = staticWorkData[selectedWork] || [];
 
   // Card Component
   const WorkCard = ({ project }) => (
@@ -28,26 +48,19 @@ const WorkSection = () => {
         <img
           src={project.image}
           alt={project.title}
-          className="w-full h-full object-cover"
+          className="w-full h-full object-contain"
         />
       </div>
       <h2 className="mt-3 font-semibold text-lg">{project.title}</h2>
       <h3 className="text-sm text-gray-600">{project.description}</h3>
       <div className="flex justify-end mt-5">
-      <Link
-  href={`/work/${project._id}`}
-  className="px-5 py-1 rounded-2xl bg-black text-white text-sm"
->
-  View Details
-</Link>
-        {/* <a
-          href={project.deploymentLink}
-          target="_blank"
-          rel="noopener noreferrer"
+        <Link
+          href={`/work/${project._id}`}
+          // href={}
           className="px-5 py-1 rounded-2xl bg-black text-white text-sm"
         >
-          View Project
-        </a> */}
+          View Details
+        </Link>
       </div>
     </div>
   );

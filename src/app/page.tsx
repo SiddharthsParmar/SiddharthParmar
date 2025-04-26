@@ -1,3 +1,4 @@
+import Experience from "@/components/Experience";
 import Introduction from "@/components/Introduction";
 import Navbar from "@/components/Navbar";
 // import SkillSection from "@/components/SkillSection";
@@ -14,9 +15,10 @@ export default function Home() {
     </div>
     <div className="">
     {/* <SkillSection/> */}
-    </div>
     
   <WorkSection/> 
+    </div>
+  <Experience/>
     </div>
 
 

@@ -1,29 +1,80 @@
-import React from 'react';
+import React from "react";
 
-async function getWorkItem(id: string) {
-  const res = await fetch(`http://localhost:3000/api/work/${id}`, {
-    cache: "no-store",
-  });
+const staticWorkData = [
+  {
+    _id: "1",
+    title: "Portfolio Website",
+    description: "A personal portfolio showcasing my skills and projects.",
+    image: "/images/portfolio.png",
+    category: "web Apps",
+    deploymentLink: "https://portfolio.example.com",
+    video: "/videos/portfolio.mp4",
+  },
+  {
+    _id: "2",
+    title: "E-Commerce Platform",
+    description: "A full-stack MERN e-commerce application.",
+    image: "/images/ecommerce.png",
+    category: "web Apps",
+    deploymentLink: "https://ecommerce.example.com",
+    video: "/videos/deefakevideo.mp4",
+  },
+  {
+    _id: "3",
+    title: "Deepfake Detector",
+    description: "A machine learning model to detect deepfake images.",
+    image: "/images/",
+    category: "ai ml",
+    deploymentLink: "https://deepfake.example.com",
+    video: "/videos/deepfake.mp4",
+  },
+  {
+    _id: "4",
+    title: "Chatbot Assistant",
+    description: "An AI-powered chatbot built using NLP models.",
+    image: "/images/chatbot.png",
+    category: "ai ml",
+    deploymentLink: "https://chatbot.example.com",
+    video: "/videos/chatbot.mp4",
+  },
+];
 
-  if (!res.ok) throw new Error("Failed to fetch work data");
-  console.log(res);
-  
-  return res.json();
-}
+export default function WorkDetail({ params }: { params: { id: string } }) {
+  const work = staticWorkData.find((item) => item._id === params.id);
 
-export default async function WorkDetail({ params }: { params: { id: string } }) {
-  const work = await getWorkItem(params.id);
+  if (!work) {
+    return (
+      <div className="min-h-screen flex items-center justify-center text-xl text-red-600">
+        Project not found.
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-screen px-6 py-12 max-w-3xl mx-auto bg-white">
       <h1 className="text-4xl font-bold mb-4">{work.title}</h1>
       <p className="text-gray-600 mb-2">Category: {work.category}</p>
+
       <img
         src={work.image}
         alt={work.title}
-        className="w-full h-64 object-cover rounded-lg mb-4"
+        className="w-full h-64 object-cover rounded-lg mb-6"
       />
+
+      {/* Video Showcase */}
+      <video
+        src={work.video}
+        controls
+        muted
+        playsInline
+        className="w-full rounded-lg mb-6 shadow-md"
+        preload="metadata"
+      >
+        Your browser does not support the video tag.
+      </video>
+
       <p className="text-lg mb-6">{work.description}</p>
+
       <a
         href={work.deploymentLink}
         target="_blank"
