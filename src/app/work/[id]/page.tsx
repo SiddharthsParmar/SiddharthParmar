@@ -1,45 +1,59 @@
+import { Metadata } from "next";
 import React from "react";
 
-const staticWorkData = [
-  {
-    _id: "1",
-    title: "Portfolio Website",
-    description: "A personal portfolio showcasing my skills and projects.",
-    image: "/images/portfolio.png",
-    category: "web Apps",
-    deploymentLink: "https://portfolio.example.com",
-    video: "/videos/portfolio.mp4",
-  },
-  {
-    _id: "2",
-    title: "E-Commerce Platform",
-    description: "A full-stack MERN e-commerce application.",
-    image: "/images/ecommerce.png",
-    category: "web Apps",
-    deploymentLink: "https://ecommerce.example.com",
-    video: "/videos/deefakevideo.mp4",
-  },
-  {
-    _id: "3",
-    title: "Deepfake Detector",
-    description: "A machine learning model to detect deepfake images.",
-    image: "/images/",
-    category: "ai ml",
-    deploymentLink: "https://deepfake.example.com",
-    video: "/videos/deepfake.mp4",
-  },
-  {
-    _id: "4",
-    title: "Chatbot Assistant",
-    description: "An AI-powered chatbot built using NLP models.",
-    image: "/images/chatbot.png",
-    category: "ai ml",
-    deploymentLink: "https://chatbot.example.com",
-    video: "/videos/chatbot.mp4",
-  },
-];
+type Props = {
+  params: {
+    id: string;
+  };
+};
 
-export default function WorkDetail({ params }: { params: { id: string } }) {
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  // Optional: Dynamic metadata
+  return {
+    title: `Project | ${params.id}`,
+  };
+}
+
+export default function WorkDetail({ params }: Props) {
+  const staticWorkData = [
+    {
+      _id: "1",
+      title: "Portfolio Website",
+      description: "A personal portfolio showcasing my skills and projects.",
+      image: "/images/portfolio.png",
+      category: "web Apps",
+      deploymentLink: "https://portfolio.example.com",
+      video: "/videos/portfolio.mp4",
+    },
+    {
+      _id: "2",
+      title: "E-Commerce Platform",
+      description: "A full-stack MERN e-commerce application.",
+      image: "/images/ecommerce.png",
+      category: "web Apps",
+      deploymentLink: "https://ecommerce.example.com",
+      video: "/videos/deefakevideo.mp4",
+    },
+    {
+      _id: "3",
+      title: "Deepfake Detector",
+      description: "A machine learning model to detect deepfake images.",
+      image: "/images/",
+      category: "ai ml",
+      deploymentLink: "https://deepfake.example.com",
+      video: "/videos/deepfake.mp4",
+    },
+    {
+      _id: "4",
+      title: "Chatbot Assistant",
+      description: "An AI-powered chatbot built using NLP models.",
+      image: "/images/chatbot.png",
+      category: "ai ml",
+      deploymentLink: "https://chatbot.example.com",
+      video: "/videos/chatbot.mp4",
+    },
+  ];
+
   const work = staticWorkData.find((item) => item._id === params.id);
 
   if (!work) {
@@ -61,7 +75,6 @@ export default function WorkDetail({ params }: { params: { id: string } }) {
         className="w-full h-64 object-cover rounded-lg mb-6"
       />
 
-      {/* Video Showcase */}
       <video
         src={work.video}
         controls
